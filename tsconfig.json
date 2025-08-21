@@ -1,3 +1,32 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "app": [
+        "app/*"
+      ]
+    },
+    "types": [
+      "redux-persist",
+      "nativewind/types"
+    ],
+    "lib": [
+      "es2020"
+    ]
+  },
+  "include": [
+    "__tests__/**/*",
+    ".eslintrc.js",
+    "*.config.js",
+    "**.js",
+    "app",
+    "nativewind-env.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
 }
