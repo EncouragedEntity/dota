@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { API_URL, BASE_URL, ENVIRONMENT } from './env.development';
+import { API_URL, BASE_URL, ASSETS_URL, ENVIRONMENT } from './env.development';
 
 console.log('ENVIRONMENT', ENVIRONMENT);
 
@@ -10,6 +10,7 @@ const debug = ['development', 'debug'].includes(ENVIRONMENT.toLowerCase());
 const url = {
   base: BASE_URL,
   api: API_URL,
+  assets: ASSETS_URL, 
 } as const;
 
 export default {
