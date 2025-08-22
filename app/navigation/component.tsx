@@ -6,6 +6,8 @@ import routes from './routes';
 import { NavigationRef, RootStack } from './types';
 import type { HeroesStackParams, RootStackParams } from './types';
 import theme from 'app/theme';
+import { TouchableOpacity } from 'react-native';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
 const MainNavigation: React.FC<RootStack<typeof routes.heroes.stack>> = React.memo(() => {
   const Stack = React.useMemo(() => createStackNavigator<HeroesStackParams>(), []);
@@ -18,13 +20,28 @@ const MainNavigation: React.FC<RootStack<typeof routes.heroes.stack>> = React.me
       <Stack.Screen
         component={Heroes.List}
         name={routes.heroes.list}
-        options={{ title: 'Heroes' }}
+        options={({ navigation }) => ({
+          title: 'Heroes',
+          headerRight: () => {
+            return (
+              <TouchableOpacity className='flex items-center p-2' onPress={() => navigation.navigate(routes.heroes.filter)}>
+                <MaterialIcon size={24} name={'filter-list'} />
+              </TouchableOpacity>
+            );
+          },
+        })}
       />
 
       <Stack.Screen
         component={Heroes.Details}
         name={routes.heroes.details}
         options={{ title: 'Hero Details' }}
+      />
+
+      <Stack.Screen
+        component={Heroes.Filter}
+        name={routes.heroes.filter}
+        options={{ title: 'Filter heroes', presentation: 'modal' }}
       />
     </Stack.Navigator>
   );
@@ -47,7 +64,6 @@ export default React.forwardRef<NavigationRef, {}>((props, ref) => {
           headerShown: false,
         }}
       >
-
         <Stack.Screen component={MainNavigation} name={routes.heroes.stack} />
       </Stack.Navigator>
     </NavigationContainer>

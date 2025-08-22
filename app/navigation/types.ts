@@ -1,12 +1,13 @@
 import type { CompositeScreenProps, NavigationContainerRef, NavigatorScreenParams } from '@react-navigation/native';
 import type { StackScreenProps } from '@react-navigation/stack';
-import type { Hero } from 'app/modules/heroes/types';
+import type { Hero, FetchParams } from 'app/modules/heroes/types';
 import routes from './routes';
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 
 export type HeroesStackParams = {
   [routes.heroes.list]?: undefined;
-  [routes.heroes.details]?: Hero;
+  [routes.heroes.details]: { hero: Hero };
+  [routes.heroes.filter]?: Partial<FetchParams>;
 };
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //

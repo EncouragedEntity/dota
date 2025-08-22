@@ -54,16 +54,15 @@ export interface SortingParams {
 }
 
 export interface FilteringParams {
-  primaryAttr?: PrimaryAttr;
-  attackType?: AttackType;
-  roles?: Array<HeroRole>;
-  cmEnabled?: boolean;
+  role?: HeroRole;
 }
 
 export interface FetchParams {
   filter?: FilteringParams;
   sort?: SortingParams;
+  triggerError?: boolean;
 }
+
 export interface State {
   events: { [key: string]: boolean; };
   data: Array<Hero>;

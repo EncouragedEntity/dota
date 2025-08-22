@@ -8,6 +8,7 @@ export default {
   heroes: {
     stack: 'heroes/stack',
     list: 'heroes/list',
+    filter: 'heroes/filter',
     details: 'heroes/details',
   } as const,
 };

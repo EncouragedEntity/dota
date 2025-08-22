@@ -4,6 +4,7 @@ import { initialWindowMetrics, SafeAreaProvider } from 'react-native-safe-area-c
 import Navigation, { NavigationRef } from 'app/navigation';
 import store, { Provider } from 'app/storage';
 import "./global.css"
+import Toast from 'react-native-toast-message';
 
 export default React.memo(() => {
   const navigation = React.useRef<NavigationRef>(null);
@@ -19,6 +20,8 @@ export default React.memo(() => {
 
       <Provider store={store}>
         <Navigation ref={navigation} />
+
+        <Toast />
       </Provider>
     </SafeAreaProvider>
   );
